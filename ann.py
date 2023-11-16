@@ -25,6 +25,9 @@ y_onehot = to_categorical(y, num_classes=3)
 print(f"len of dependent variable {len(x.columns.tolist())}")
 # Splitting the data into training and testing sets (70% train, 30% test)
 X_train, X_test, y_train, y_test = train_test_split(x, y_onehot, test_size=0.3, random_state=42)
+print("--")
+print(X_test)
+print("--")
 
 # Creating a neural network model with 6 hidden layers
 model = Sequential()
@@ -57,7 +60,7 @@ model.add(Dense(units=3, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.001), metrics=['accuracy'])
 
 # Training the model on the training data
-model.fit(X_train, y_train, epochs=200, batch_size=8, verbose=1)
+model.fit(X_train, y_train, epochs=5, batch_size=8, verbose=1)
 
 # Evaluating the model on the test data
 loss = model.evaluate(X_test, y_test)
@@ -80,3 +83,19 @@ accuracy = accuracy_score(true_labels, predicted_labels)
 print("Confusion Matrix:")
 print(conf_matrix)
 print(f'Accuracy: {accuracy}')
+
+
+# single value data test
+data_test = data.iloc[1,:-1]
+
+print(data_test)
+data_test = data_test.values.reshape(1, -1)
+print(data_test)
+# Making a prediction for the new data point
+prediction = model.predict(data_test)
+
+# Convert prediction to class label
+predicted_class = np.argmax(prediction, axis=1)
+
+print("Raw Prediction:", prediction)
+print("Predicted Class:", predicted_class)

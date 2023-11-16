@@ -81,3 +81,14 @@ conf_matrix = confusion_matrix(y_test, predictions)
 print("Confusion Matrix:")
 print(conf_matrix)
 print(f'Accuracy: {accuracy}')
+
+# single value data test
+data_test = data.iloc[0,:-1].values.reshape(1, -1)
+
+# Scale the new data point if you scaled your training data
+# new_data_point_scaled = scaler.transform(new_data_point)
+
+# Making a prediction for the new data point
+prediction = svm_model.predict(data_test)
+
+print("Predicted Class:", prediction)
