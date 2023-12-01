@@ -123,6 +123,9 @@ predictions = svm_model.predict(X_test)
 
 # Calculate accuracy
 accuracy = accuracy_score(y_test, predictions)
+precision = precision_score(y_test, predictions)
+recall = recall_score(y_test, predictions)
+f1 = f1_score(y_test, predictions)
 # # Create a confusion matrix
 conf_matrix = confusion_matrix(y_test, predictions)
 
