@@ -141,6 +141,9 @@ conf_matrix = confusion_matrix(true_labels, predicted_labels)
 
 # Calculate accuracy
 accuracy = accuracy_score(true_labels, predicted_labels)
+precision = precision_score(true_labels, predicted_labels)
+recall = recall_score(true_labels,predicted_labels)
+f1 = f1_score(true_labels, y_pred_classes)
 
 # Print the confusion matrix and accuracy
 print("Confusion Matrix:")
